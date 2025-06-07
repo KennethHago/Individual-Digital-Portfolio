@@ -1,0 +1,2216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Ethics Portfolio | IT Professional Responsibility</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --primary-light: #4895ef;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --dark: #1a1a2e;
+            --darker: #0d0d1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #ef233c;
+            
+            --gradient-primary: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            --gradient-accent: linear-gradient(135deg, var(--accent), var(--secondary));
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+            --shadow-2xl: 0 25px 50px rgba(0,0,0,0.25);
+            
+            --rounded-sm: 0.25rem;
+            --rounded-md: 0.5rem;
+            --rounded-lg: 0.75rem;
+            --rounded-xl: 1rem;
+            --rounded-full: 9999px;
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 8rem 0 12rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            z-index: 0;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header-content h1 {
+            font-size: 3.75rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .header-content p {
+            font-size: 1.35rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 2rem;
+            border-radius: var(--rounded-full);
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            min-width: 180px;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-dark);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background-color: var(--light-gray);
+        }
+        
+        .btn-outline {
+            border: 2px solid rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-dark);
+            border-color: white;
+        }
+        
+        .btn-icon {
+            margin-right: 0.5rem;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            z-index: 2;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .scroll-down:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(255,255,255,0.98);
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            color: var(--secondary);
+        }
+        
+        .logo-icon {
+            margin-right: 0.5rem;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .logo:hover .logo-icon {
+            transform: rotate(15deg);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-dark);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: var(--primary-dark);
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            z-index: 101;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .mobile-menu-btn:hover {
+            background-color: var(--light-gray);
+        }
+        
+        /* Main Content */
+        main {
+            position: relative;
+            margin-top: -6rem;
+            z-index: 5;
+            padding-bottom: 3rem;
+        }
+        
+        section {
+            background-color: white;
+            border-radius: var(--rounded-xl);
+            box-shadow: var(--shadow-md);
+            padding: 4rem;
+            margin-bottom: 3rem;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .section-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .section-header h2 {
+            font-size: 2.75rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Introduction Section */
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+        
+        .intro-text {
+            flex: 1;
+        }
+        
+        .intro-text p {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .intro-image {
+            flex: 1;
+            border-radius: var(--rounded-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            transform: rotate(2deg);
+            transition: var(--transition-slow);
+            border: 10px solid white;
+        }
+        
+        .intro-image:hover {
+            transform: rotate(0) scale(1.02);
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+        
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background-color: var(--light);
+            border-radius: var(--rounded-lg);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .stat-item:hover .stat-number,
+        .stat-item:hover .stat-label {
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        
+        /* Quote Styles */
+        .quote-card {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem;
+            border-radius: var(--rounded-lg);
+            margin: 4rem 0;
+            position: relative;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .quote-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: -2rem;
+            left: 2rem;
+            font-size: 12rem;
+            font-family: serif;
+            color: rgba(255,255,255,0.1);
+            line-height: 1;
+            z-index: 0;
+        }
+        
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-weight: 600;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Case Study Section */
+        .case-study-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            gap: 3rem;
+            background: var(--light);
+            padding: 2rem;
+            border-radius: var(--rounded-lg);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .case-study-image {
+            width: 200px;
+            height: 200px;
+            border-radius: var(--rounded-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            flex-shrink: 0;
+            border: 5px solid white;
+        }
+        
+        .case-study-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+        
+        .case-study-image:hover img {
+            transform: scale(1.1);
+        }
+        
+        .case-study-title h3 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-study-title p {
+            color: var(--gray);
+        }
+        
+        .subsection {
+            margin-bottom: 3rem;
+        }
+        
+        .subsection h4 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            display: inline-block;
+        }
+        
+        .subsection-content {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .subsection-text {
+            flex: 1;
+        }
+        
+        .subsection-text p {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .subsection-image {
+            flex: 1;
+            border-radius: var(--rounded-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 5px solid white;
+            transition: var(--transition);
+        }
+        
+        .subsection-image:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .subsection-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+        
+        .subsection-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--light-gray);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 2rem);
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 2rem);
+            text-align: left;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+            transition: var(--transition);
+        }
+        
+        .timeline-item:hover .timeline-dot {
+            transform: translateX(-50%) scale(1.2);
+            background-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+        
+        .timeline-content {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--rounded-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .timeline-item:hover .timeline-date {
+            color: var(--accent);
+        }
+        
+        .timeline-content h5 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .timeline-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Ethics Pledge */
+        .pledge-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pledge-card {
+            background-color: white;
+            border-radius: var(--rounded-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .pledge-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+        
+        .pledge-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .pledge-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .pledge-card:hover .pledge-icon {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        .pledge-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .pledge-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .pledge-explanation {
+            font-size: 0.85rem;
+            color: var(--gray);
+            padding: 1rem;
+            background-color: var(--light);
+            border-radius: var(--rounded-md);
+            border-left: 3px solid var(--accent);
+            transition: var(--transition);
+        }
+        
+        .pledge-card:hover .pledge-explanation {
+            background-color: rgba(247, 37, 133, 0.05);
+        }
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .gallery-item {
+            border-radius: var(--rounded-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            aspect-ratio: 4/3;
+            border: 5px solid white;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            font-weight: 500;
+            opacity: 0;
+            transition: var(--transition);
+            transform: translateY(10px);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Back to Top */
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            color: var(--primary);
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--rounded-full);
+            background-color: var(--light);
+        }
+        
+        .back-to-top:hover {
+            color: var(--accent);
+            gap: 0.7rem;
+            background-color: rgba(247, 37, 133, 0.1);
+        }
+        
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-slow);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 800px;
+            max-height: 90vh;
+            background-color: white;
+            border-radius: var(--rounded-lg);
+            overflow: hidden;
+            transform: scale(0.8);
+            transition: var(--transition-slow);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-image {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1.25rem;
+        }
+        
+        .modal-close:hover {
+            background-color: var(--danger);
+            transform: rotate(90deg);
+        }
+        
+        .modal-caption {
+            padding: 1.5rem;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .modal-caption h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-caption p {
+            color: var(--gray);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+            margin-top: 5rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            color: white;
+        }
+        
+        .footer-logo .logo-icon {
+            font-size: 1.5em;
+            vertical-align: middle;
+            color: var(--accent);
+        }
+        
+        .footer-text {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .social-link {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.25rem;
+            color: white;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            opacity: 0.6;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--rounded-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--rounded-md);
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.85rem 2rem;
+            border-radius: var(--rounded-full);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background: var(--gradient-accent);
+        }
+        
+        .submit-btn .btn-icon {
+            margin-right: 0.5rem;
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--rounded-md);
+            box-shadow: var(--shadow-lg);
+            z-index: 1001;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition-slow);
+            display: flex;
+            align-items: center;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification-icon {
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+            border: none;
+            transition: var(--transition);
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: var(--darker);
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode section,
+        body.dark-mode .stat-item,
+        body.dark-mode .pledge-card,
+        body.dark-mode .timeline-content,
+        body.dark-mode .case-study-header,
+        body.dark-mode .contact-form {
+            background-color: #1e1e2e;
+            color: #e0e0e0;
+            border-color: rgba(255,255,255,0.05);
+        }
+        
+        body.dark-mode .section-header h2,
+        body.dark-mode .pledge-title,
+        body.dark-mode .case-study-title h3,
+        body.dark-mode .subsection h4,
+        body.dark-mode .timeline-content h5 {
+            color: var(--primary-light);
+        }
+        
+        body.dark-mode p,
+        body.dark-mode .pledge-description,
+        body.dark-mode .stat-label,
+        body.dark-mode .timeline-content p,
+        body.dark-mode .case-study-title p {
+            color: #b0b0b0;
+        }
+        
+        body.dark-mode .form-control {
+            background-color: #2a2a3a;
+            border-color: rgba(255,255,255,0.1);
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .form-label {
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .form-control:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+        }
+        
+        body.dark-mode nav {
+            background-color: rgba(30, 30, 46, 0.98);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .nav-links a {
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .nav-links a:hover,
+        body.dark-mode .nav-links a.active {
+            color: var(--primary-light);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            section {
+                padding: 3rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .intro-content {
+                flex-direction: column;
+            }
+            
+            .subsection-content {
+                flex-direction: column;
+            }
+            
+            .subsection-image {
+                order: -1;
+            }
+            
+            .timeline::before {
+                left: 2rem;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 4rem;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-dot {
+                left: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 5rem 0 9rem;
+            }
+            
+            .header-content h1 {
+                font-size: 2.75rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transform: translateX(100%);
+                transition: var(--transition-slow);
+                z-index: 100;
+            }
+            
+            body.dark-mode .nav-links {
+                background-color: var(--darker);
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .section-header h2 {
+                font-size: 2.25rem;
+            }
+            
+            section {
+                padding: 2rem;
+            }
+            
+            .case-study-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .case-study-image {
+                margin: 0 auto;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            
+            .theme-toggle {
+                bottom: 1rem;
+                left: 1rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header {
+                padding: 4rem 0 8rem;
+            }
+            
+            .header-content h1 {
+                font-size: 2.25rem;
+            }
+            
+            .header-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .pledge-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote-text {
+                font-size: 1.25rem;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="particles" id="particles-js"></div>
+        <div class="container header-content">
+            <h1>Ethical Dimensions of Information Technology</h1>
+            <p>A comprehensive exploration of professional responsibility in the digital age</p>
+            <div class="btn-group">
+                <a href="#introduction" class="btn btn-primary">
+                    <i class="fas fa-search btn-icon"></i> Explore Portfolio
+                </a>
+                <a href="#pledge" class="btn btn-outline">
+                    <i class="fas fa-handshake btn-icon"></i> View Ethics Pledge
+                </a>
+            </div>
+            <button class="scroll-down" id="scrollDown">
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fas fa-laptop-code"></i></span>
+                IT Ethics Portfolio
+            </a>
+            <button class="mobile-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#introduction" class="active"><i class="fas fa-home nav-icon"></i> Introduction</a></li>
+                <li><a href="#objectives"><i class="fas fa-bullseye nav-icon"></i> Objectives</a></li>
+                <li><a href="#reflection"><i class="fas fa-brain nav-icon"></i> Reflection</a></li>
+                <li><a href="#case-study"><i class="fas fa-file-alt nav-icon"></i> Case Study</a></li>
+                <li><a href="#pledge"><i class="fas fa-handshake nav-icon"></i> Ethics Pledge</a></li>
+                <li><a href="#gallery"><i class="fas fa-images nav-icon"></i> Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section id="introduction">
+            <div class="section-header">
+                <h2>Introduction</h2>
+                <p>My journey through ITEC 23 has fundamentally transformed my understanding of technology's societal impact and professional responsibilities</p>
+            </div>
+            
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>In our increasingly digital world, information technology has become the backbone of modern society. My exploration in ITEC 23 - Social and Professional Issues in Information Technology has revealed the profound ethical dimensions that underpin every technological decision we make as IT professionals. This portfolio represents my intellectual and ethical journey through the complex landscape where technology meets human values.</p>
+                    
+                    <p>What began as academic requirement has evolved into a personal mission. The course exposed me to critical issues like algorithmic bias, surveillance capitalism, and the ethical implications of artificial intelligence. These aren't abstract concepts—they're real challenges affecting real people, from the individual whose data is harvested without consent to communities marginalized by biased algorithms.</p>
+                    
+                    <div class="quote-card">
+                        <p class="quote-text">The real problem of humanity is that we have Paleolithic emotions, medieval institutions, and god-like technology.</p>
+                        <p class="quote-author">— E.O. Wilson</p>
+                    </div>
+                    
+                    <p>Through case studies like Cambridge Analytica's data exploitation and the ethical dilemmas of self-driving cars, I've come to understand that technical proficiency alone is insufficient. True professionalism in IT requires what philosopher Luciano Floridi calls "information ethics"—a framework that considers the moral implications of how we create, store, distribute, and access information.</p>
+                </div>
+                <div class="intro-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Ethical decision making in technology" class="gallery-img">
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">78%</div>
+                    <div class="stat-label">of consumers say ethical practices influence their tech purchases</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">63%</div>
+                    <div class="stat-label">of IT professionals have faced ethical dilemmas at work</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$3.86M</div>
+                    <div class="stat-label">average cost of a data breach in 2023</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-label">of organizations now have an AI ethics policy</div>
+                </div>
+            </div>
+            
+            <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> Back to Top</a>
+        </section>
+        
+        <section id="objectives">
+            <div class="section-header">
+                <h2>Portfolio Objectives</h2>
+                <p>What this collection aims to demonstrate about my professional growth and ethical framework</p>
+            </div>
+            
+            <div class="quote-card">
+                <p class="quote-text">We are stuck with technology when what we really want is just stuff that works. How do you complain when your dishwasher stops working? You don't say, 'Oh damn the information technology,' you say, 'The plumbing is blocked!'</p>
+                <p class="quote-author">— Douglas Adams</p>
+            </div>
+            
+            <p>This portfolio serves multiple purposes in my professional development as an emerging IT specialist. First, it documents my evolving understanding of the complex ethical landscape surrounding information technology. Through curated case studies and personal reflections, it demonstrates my ability to analyze technical problems through both a practical and ethical lens.</p>
+            
+            <div class="subsection">
+                <div class="subsection-content">
+                    <div class="subsection-text">
+                        <h4>Demonstrating Ethical Reasoning</h4>
+                        <p>The portfolio showcases my application of ethical frameworks—from Kantian deontology to utilitarian analysis—to real-world IT scenarios. Each case study demonstrates my capacity to balance technical requirements with moral responsibilities, a skill increasingly demanded in our algorithm-driven world.</p>
+                        <p>By examining incidents like the Medusa ransomware attacks, I've developed a nuanced understanding that cybersecurity isn't just about firewalls and encryption, but about protecting human dignity in digital spaces.</p>
+                    </div>
+                    <div class="subsection-image">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop" alt="Coding ethics" class="gallery-img">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-content">
+                    <div class="subsection-image">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop" alt="Professional development" class="gallery-img">
+                    </div>
+                    <div class="subsection-text">
+                        <h4>Professional Development</h4>
+                        <p>This collection serves as tangible evidence of my commitment to ongoing professional education. The IT field evolves at breakneck speed, and with it, new ethical challenges emerge. My engagement with these issues demonstrates my dedication to being not just a skilled technician, but a thoughtful professional.</p>
+                        <p>The portfolio also reflects my understanding of professional codes of conduct, from ACM's guidelines to IEEE's ethical standards, and how they translate to daily practice in IT roles.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+            <div class="timeline-date">Week 1-3</div>
+            <h5>Common Ethical Theories & Code of Ethics</h5>
+            <p>Studied foundational ethical theories including utilitarianism, deontology, and virtue ethics as they apply to IT. Examined professional codes like ACM and IEEE, comparing their approaches to ethical decision-making in technology fields.</p>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+            <div class="timeline-date">Week 4-6</div>
+            <h5>Technologies Impact on Privacy & Essentials of Data Privacy Act</h5>
+            <p>Analyzed how emerging technologies challenge privacy boundaries, with focus on GDPR and Philippines' Data Privacy Act of 2012. Explored consent mechanisms, data minimization principles, and the ethics of surveillance technologies.</p>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+            <div class="timeline-date">Week 7-9</div>
+            <h5>The Programmer's Source Code and the Intellectual Property Law & The Blogger's Freedom of Expression and the Cyber Libel Law</h5>
+            <p>Evaluated copyright protections for software under intellectual property law and examined the tension between free speech and online defamation. Case studies included open-source licensing debates and landmark cyber libel cases in digital media.</p>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+            <div class="timeline-date">Week 10-12</div>
+            <h5>Cyber Criminals and the Cybercrime Law & Enforcement and Implementation of RA 10175</h5>
+            <p>Investigated Philippines' Cybercrime Prevention Act (RA 10175), analyzing its provisions against hacking, identity theft, and online fraud. Assessed law enforcement challenges in digital evidence collection and cross-jurisdictional cybercrime prosecution.</p>
+        </div>
+    </div>
+</div>
+            
+            <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> Back to Top</a>
+        </section>
+        
+        <<section id="reflection">
+    <div class="section-header">
+        <h2>Personal Reflection</h2>
+        <p>How this course has fundamentally shaped my understanding of ethical responsibilities in IT</p>
+    </div>
+    
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop" alt="Ethical theories" class="gallery-img">
+            <div class="gallery-caption">Ethical Frameworks Analysis</div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop" alt="Data privacy law" class="gallery-img">
+            <div class="gallery-caption">Data Privacy Act Implementation</div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop" alt="Cybercrime law" class="gallery-img">
+            <div class="gallery-caption">RA 10175 Enforcement</div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Intellectual property" class="gallery-img">
+            <div class="gallery-caption">IP Law in Programming</div>
+        </div>
+    </div>
+    
+    <p>This course has transformed my perspective on IT ethics through our exploration of Common Ethical Theories and professional Codes of Ethics. The utilitarian vs deontological debate particularly resonated when examining real-world cases - should we prioritize outcomes or principles? The ACM and IEEE codes provided concrete guidance, showing how abstract theories translate to professional practice.</p>
+    
+    <div class="quote-card">
+        <p class="quote-text">"Privacy is not an option, and it shouldn't be the price we accept for just getting on the internet."</p>
+        <p class="quote-author">— Gary Kovacs</p>
+    </div>
+    
+    <p>Our study of Technologies Impact on Privacy and the Data Privacy Act revealed uncomfortable truths about data collection practices. Case studies showed how easily personal data can be weaponized, making me reconsider my own development practices. I now implement privacy-by-design principles in all my projects, ensuring compliance with the Data Privacy Act's requirements for consent and data minimization.</p>
+    
+    <p>The intersection of The Programmer's Source Code with Intellectual Property Law changed how I view code ownership. Learning about copyright protections versus open-source licensing made me appreciate the ethical dimensions of code reuse. Similarly, examining Bloggers' Freedom of Expression against Cyber Libel Law highlighted the delicate balance between free speech and accountability in digital spaces.</p>
+    
+    <div class="subsection">
+        <br><h4>Key Takeaways from Cybercrime Studies</h4>
+        <ul style="list-style-position: inside; margin-bottom: 1.5rem;">
+            <li><strong>RA 10175 is comprehensive but challenging to enforce:</strong> The law covers various cybercrimes but faces implementation hurdles in our digital landscape</li>
+            <li><strong>Cybercriminals exploit legal gaps:</strong> Our analysis of case studies showed how offenders use jurisdictional complexities</li>
+            <li><strong>Prevention requires technical and legal knowledge:</strong> Effective cybersecurity means understanding both systems and relevant laws</li>
+            <li><strong>Ethical obligations extend beyond compliance:</strong> Just because something is legal doesn't make it right</li>
+        </ul>
+    </div>
+    
+    <p>The most impactful realization was how these topics interconnect - privacy violations can lead to cybercrimes, ethical lapses can create legal liabilities, and intellectual property disputes can limit technological progress. Moving forward, I'm committed to being what our course described as an "ethical first" technologist - someone who considers the legal and moral implications of every technical decision.</p>
+    
+    <p>This course has equipped me with frameworks to navigate complex situations where technology, law, and ethics intersect. Whether deciding what data to collect, how to protect intellectual property, or understanding the legal boundaries of cybersecurity measures, I now approach these challenges with greater awareness and responsibility.</p>
+    
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> Back to Top</a>
+</section>
+        
+        <section id="case-study">
+            <div class="section-header">
+                <h2>Case Study Analysis</h2>
+                <p>A deep examination of the 2023 Medusa Ransomware Attacks through multiple ethical lenses</p>
+            </div>
+            
+            <div class="case-study-header">
+                <div class="case-study-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Ransomware attack" class="gallery-img">
+                </div>
+                <div class="case-study-title">
+                    <h3>Medusa Ransomware Attacks on Educational Institutions</h3>
+                    <p>2023 Cybersecurity Crisis - Ethical Analysis</p>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h4>4.1 Incident Summary</h4>
+                <div class="subsection-content">
+                    <div class="subsection-text">
+                        <p>Between March and June 2023, the Medusa ransomware group launched targeted attacks against over 50 educational institutions across North America and Europe. The attacks followed a consistent pattern: exploitation of unpatched vulnerabilities in school management systems, encryption of critical data (including student records, financial documents, and research databases), and demands ranging from $50,000 to $1 million in cryptocurrency for decryption keys.</p>
+                        <p>The impact was devastating. Several universities had to postpone exams when they lost access to digital testing systems. A community college in Ohio reported losing 15 years of archival research. Most tragically, special education schools faced disruptions to individualized education programs (IEPs), directly impacting vulnerable students.</p>
+                    </div>
+                    <div class="subsection-image">
+                        <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?q=80&w=2069&auto=format&fit=crop" alt="Cybersecurity concept" class="gallery-img">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h4>4.2 Ethical Issues Involved</h4>
+                <div class="subsection-content">
+                    <div class="subsection-image">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop" alt="Ethical dilemma" class="gallery-img">
+                    </div>
+                    <div class="subsection-text">
+                        <p>The Medusa attacks presented multiple ethical dimensions that warrant careful analysis:</p>
+                        <ul style="list-style-position: inside; margin: 1rem 0;">
+                            <li><strong>Exploitation of vulnerable institutions:</strong> Schools were targeted precisely because they're often under-resourced yet data-rich, raising questions about distributive justice</li>
+                            <li><strong>Student privacy violations:</strong> Encryption held hostage sensitive data including mental health records, disability accommodations, and financial aid information</li>
+                            <li><strong>Educational equity impacts:</strong> Attacks disproportionately affected public institutions and community colleges over wealthy private universities</li>
+                            <li><strong>Ethical dilemma of ransom payments:</strong> While paying ransoms funds criminal enterprises, refusal could harm students through lost records</li>
+                            <li><strong>Professional responsibility:</strong> Questions about whether IT staff adequately prioritized security given known vulnerabilities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quote-card">
+                <p class="quote-text">Cybersecurity is much more than a matter of IT. It's about protecting our way of life.</p>
+                <p class="quote-author">— Stephane Nappo</p>
+            </div>
+            
+            <div class="subsection">
+                <h4>4.3 Application of Ethical Theories</h4>
+                <p>Analyzing the Medusa attacks through different ethical frameworks reveals distinct perspectives on responsibility and appropriate responses:</p>
+                
+                <div class="subsection-content" style="margin-top: 1.5rem;">
+                    <div class="subsection-text">
+                        <h5>Deontological Analysis</h5>
+                        <p>From a Kantian perspective, the attacks were categorically wrong regardless of consequences, violating universal moral laws against theft and harm. The attackers treated educational institutions merely as means to financial ends, not as ends in themselves. This framework would argue against paying ransoms, as it would encourage future attacks and violate the categorical imperative.</p>
+                        
+                        <h5>Utilitarian Perspective</h5>
+                        <p>A consequentialist analysis would weigh the net harm caused—not just financial losses but educational disruptions, mental health impacts on students, and research setbacks. Some utilitarians might reluctantly support paying ransoms if it minimized overall harm, though this risks creating perverse incentives. The attacks revealed systemic vulnerabilities that utilitarians would prioritize fixing.</p>
+                    </div>
+                    <div class="subsection-image">
+                        <img src="https://images.unsplash.com/photo-1629909613657-27f26a6148e0?q=80&w=2070&auto=format&fit=crop" alt="Ethical frameworks" class="gallery-img">
+                    </div>
+                </div>
+                
+                <div class="subsection-content" style="margin-top: 2rem;">
+                    <div class="subsection-image">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop" alt="Virtue ethics" class="gallery-img">
+                    </div>
+                    <div class="subsection-text">
+                        <h5>Virtue Ethics Examination</h5>
+                        <p>This approach would focus on the character and intentions of all parties. The attackers demonstrated vices like greed and callousness toward education's social value. IT professionals might reflect on whether they exhibited sufficient prudence and diligence in system maintenance. School administrators would need courage to make difficult decisions about ransom payments.</p>
+                        
+                        <h5>Social Contract Theory</h5>
+                        <p>From this perspective, the attacks violated the implicit social contract that enables educational institutions to operate. There's an argument that society has failed to adequately protect these vital institutions. The incidents reveal gaps in our collective responsibility to safeguard education from digital threats.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h4>4.4 Proposed Ethical Solutions</h4>
+                <p>Addressing the systemic issues revealed by the Medusa attacks requires multi-layered solutions that address technical, organizational, and policy dimensions:</p>
+                
+                <div class="subsection-content" style="margin-top: 1.5rem;">
+                    <div class="subsection-text">
+                        <h5>Technical Safeguards</h5>
+                        <ul style="list-style-position: inside; margin: 1rem 0;">
+                            <li>Implementation of immutable backups stored air-gapped from primary systems</li>
+                            <li>Adoption of zero-trust architectures to limit lateral movement during breaches</li>
+                            <li>Regular penetration testing with ethical hackers to identify vulnerabilities</li>
+                        </ul>
+                        
+                        <h5>Policy Interventions</h5>
+                        <ul style="list-style-position: inside; margin: 1rem 0;">
+                            <li>Creation of a federal cybersecurity grant program for educational institutions</li>
+                            <li>Development of sector-specific incident response protocols</li>
+                            <li>International cooperation to track and disrupt ransomware payment channels</li>
+                        </ul>
+                    </div>
+                    <div class="subsection-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Security solutions" class="gallery-img">
+                    </div>
+                </div>
+                
+                <div class="subsection-content" style="margin-top: 2rem;">
+                    <div class="subsection-image">
+                        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=2070&auto=format&fit=crop" alt="Education and training" class="gallery-img">
+                    </div>
+                    <div class="subsection-text">
+                        <h5>Educational Initiatives</h5>
+                        <ul style="list-style-position: inside; margin: 1rem 0;">
+                            <li>Cybersecurity training programs for non-technical school administrators</li>
+                            <li>Integration of ethical hacking concepts into computer science curricula</li>
+                            <li>Public awareness campaigns about ransomware risks and prevention</li>
+                        </ul>
+                        
+                        <h5>Ethical Considerations</h5>
+                        <ul style="list-style-position: inside; margin: 1rem 0;">
+                            <li>Development of ethical guidelines for ransomware response scenarios</li>
+                            <li>Creation of alternative dispute resolution mechanisms for cyberattacks</li>
+                            <li>Establishment of cyber insurance pools to reduce pressure to pay ransoms</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quote-card">
+                <p class="quote-text">The only truly secure system is one that is powered off, cast in a block of concrete and sealed in a lead-lined room with armed guards.</p>
+                <p class="quote-author">— Gene Spafford</p>
+            </div>
+            
+            <p style="margin-top: 2rem;">This case study has profoundly influenced my career aspirations. I now plan to specialize in educational technology security, helping institutions protect their systems without compromising accessibility or pedagogical mission. The Medusa attacks demonstrate that cybersecurity isn't just about technology—it's about safeguarding society's foundational institutions.</p>
+            
+            <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> Back to Top</a>
+        </section>
+        
+        <section id="pledge">
+            <div class="section-header">
+                <h2>Professional Ethics Pledge</h2>
+                <p>My personal commitment to ethical practice in information technology</p>
+            </div>
+            
+            <div class="quote-card">
+                <p class="quote-text">Ethics is knowing the difference between what you have a right to do and what is right to do.</p>
+                <p class="quote-author">— Potter Stewart</p>
+            </div>
+            
+            <p>As I prepare to enter the information technology profession, I recognize that technical competence alone is insufficient. The power we wield as IT professionals comes with profound responsibilities—to individuals, organizations, and society at large. This pledge represents my personal code of conduct, synthesizing the lessons from this course into actionable commitments for my career.</p>
+            
+            <div class="pledge-container">
+                <div class="pledge-card">
+                    <div class="pledge-icon"><i class="fas fa-user-shield"></i></div>
+                    <div class="pledge-title">Guardian of Privacy</div>
+                    <div class="pledge-description">I will treat all personal data as a sacred trust, implementing security measures that exceed legal minimums and advocating for privacy-by-design in all systems I help create.</div>
+                    <div class="pledge-explanation">Inspired by the EU's GDPR and the principles of data minimization, this commitment reflects my belief that privacy is foundational to human dignity in the digital age.</div>
+                </div>
+                
+                <div class="pledge-card">
+                    <div class="pledge-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div class="pledge-title">Champion of Equity</div>
+                    <div class="pledge-description">I will actively work to identify and mitigate biases in algorithms and systems, ensuring technology serves all communities fairly regardless of race, gender, or socioeconomic status.</div>
+                    <div class="pledge-explanation">The work of Joy Buolamwini on algorithmic bias demonstrated how technology can perpetuate inequality when not consciously designed for inclusion.</div>
+                </div>
+                
+                <div class="pledge-card">
+                    <div class="pledge-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="pledge-title">Advocate for Transparency</div>
+                    <div class="pledge-description">I will resist pressures to obscure system limitations or risks, providing clear explanations of technology's capabilities and potential impacts to all stakeholders.</div>
+                    <div class="pledge-explanation">The Theranos scandal revealed the dangers of "fake it till you make it" culture in tech—transparency builds trust and prevents harm.</div>
+                </div>
+                
+                <div class="pledge-card">
+                    <div class="pledge-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="pledge-title">Lifelong Learner</div>
+                    <div class="pledge-description">I will dedicate at least 100 hours annually to studying emerging ethical challenges in IT, recognizing that moral understanding must evolve alongside technology.</div>
+                    <div class="pledge-explanation">As expressed by philosopher Luciano Floridi, information ethics requires continuous adaptation to new technological contexts.</div>
+                </div>
+                
+                <div class="pledge-card">
+                    <div class="pledge-icon"><i class="fas fa-hands-helping"></i></div>
+                    <div class="pledge-title">Steward of Society</div>
+                    <div class="pledge-description">I will consider the broader societal impacts of my work, advocating for projects that benefit the public good and resisting those that may cause harm.</div>
+                    <div class="pledge-explanation">The IEEE Code of Ethics reminds us that technology professionals have obligations to society that transcend employer interests.</div>
+                </div>
+                
+                <div class="pledge-card">
+                    <div class="pledge-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="pledge-title">Defender of Security</div>
+                    <div class="pledge-description">I will prioritize system security not as an afterthought but as a fundamental requirement, protecting users from harm through diligent practice.</div>
+                    <div class="pledge-explanation">The Medusa attacks demonstrated how security failures can disproportionately impact society's most vulnerable institutions.</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 3rem; text-align: center; font-size: 1.1rem; font-weight: 500;">By upholding these principles, I commit to being not just a skilled technologist, but an ethical professional who contributes to human flourishing through responsible innovation.</p>
+            
+            <div style="display: flex; justify-content: center; margin: 3rem 0;">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop" alt="Professional handshake" class="gallery-img" style="max-width: 600px; border-radius: var(--rounded-lg); box-shadow: var(--shadow-md);">
+            </div>
+            
+            <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> Back to Top</a>
+        </section>
+        
+        <section id="gallery">
+            <div class="section-header">
+                <h2>Ethics in Action</h2>
+                <p>Visualizing the concepts and cases that shaped my understanding of IT ethics</p>
+            </div>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop" alt="Data privacy" class="gallery-img">
+                    <div class="gallery-caption">Data Privacy Fundamentals</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Code of ethics" class="gallery-img">
+                    <div class="gallery-caption">Professional Codes of Conduct</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1629909613657-27f26a6148e0?q=80&w=2070&auto=format&fit=crop" alt="Ethical frameworks" class="gallery-img">
+                    <div class="gallery-caption">Ethical Decision Frameworks</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop" alt="Virtue ethics" class="gallery-img">
+                    <div class="gallery-caption">Virtue Ethics in Technology</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=2070&auto=format&fit=crop" alt="Education and training" class="gallery-img">
+                    <div class="gallery-caption">Ethics Education</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop" alt="Decision making" class="gallery-img">
+                    <div class="gallery-caption">Decision Making Process</div>
+                </div>
+            </div>
+            
+            <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> Back to Top</a>
+        </section>
+        
+        
+    </main>
+    
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <span class="logo-icon"><i class="fas fa-laptop-code"></i></span>
+                IT Ethics Portfolio - Kenneth Hago
+            </div>
+            <p class="footer-text">This portfolio represents my journey through the complex ethical landscape of information technology. Created as part of ITEC 23 - Social and Professional Issues in Information Technology, it demonstrates my commitment to responsible practice as I enter the IT profession.</p>
+            
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
+            
+            <p class="copyright">© 2025 IT Professional Ethics Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <img src="" alt="" class="modal-image" id="modalImage">
+            <div class="modal-caption">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle notification-icon"></i>
+        <span id="notificationText">Message sent successfully!</span>
+    </div>
+    
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Scroll Down Button
+        document.getElementById('scrollDown').addEventListener('click', () => {
+            window.scrollTo({
+                top: document.querySelector('#introduction').offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Add active class to current section in navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const scrollPosition = window.scrollY + 150;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Image Modal
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalClose = document.getElementById('modalClose');
+        const galleryImages = document.querySelectorAll('.gallery-img');
+        
+        // Gallery image data
+        const galleryData = {
+            "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop": {
+                title: "Data Privacy",
+                description: "Fundamental principles of protecting personal information in digital systems"
+            },
+            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop": {
+                title: "Code of Ethics",
+                description: "Professional standards guiding IT practice and decision-making"
+            },
+            "https://images.unsplash.com/photo-1629909613657-27f26a6148e0?q=80&w=2070&auto=format&fit=crop": {
+                title: "Ethical Frameworks",
+                description: "Different approaches to analyzing technology's moral implications"
+            },
+            "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop": {
+                title: "Virtue Ethics",
+                description: "Focusing on moral character in technology development"
+            },
+            "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=2070&auto=format&fit=crop": {
+                title: "Ethics Education",
+                description: "Training the next generation of ethical technologists"
+            },
+            "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop": {
+                title: "Decision Making",
+                description: "Process for evaluating ethical dilemmas in technology"
+            },
+            "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop": {
+                title: "Coding Ethics",
+                description: "Moral considerations in software development practices"
+            },
+            "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop": {
+                title: "Professional Development",
+                description: "Continuous learning in ethical technology practice"
+            },
+            "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop": {
+                title: "Ransomware Attack",
+                description: "Cybersecurity threats targeting educational institutions"
+            },
+            "https://images.unsplash.com/photo-1563206767-5b18f218e8de?q=80&w=2069&auto=format&fit=crop": {
+                title: "Cybersecurity Concept",
+                description: "Protecting systems from digital threats and vulnerabilities"
+            },
+            "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop": {
+                title: "Ethical Dilemma",
+                description: "Complex choices between competing values in technology"
+            },
+            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop": {
+                title: "Collaborative Analysis",
+                description: "Team discussion of ethical issues in technology projects"
+            },
+            "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop": {
+                title: "Professional Handshake",
+                description: "Symbolizing commitment to ethical technology practice"
+            }
+        };
+        
+        galleryImages.forEach(image => {
+            image.addEventListener('click', () => {
+                const imgSrc = image.src;
+                modalImage.src = imgSrc;
+                modalTitle.textContent = galleryData[imgSrc]?.title || image.alt;
+                modalDescription.textContent = galleryData[imgSrc]?.description || '';
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notificationText');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulate form submission
+            setTimeout(() => {
+                notificationText.textContent = 'Message sent successfully!';
+                notification.classList.add('show');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Hide notification after 3 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }, 1000);
+        });
+        
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Initialize Particles.js
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    "particles": {
+                        "number": {
+                            "value": 80,
+                            "density": {
+                                "enable": true,
+                                "value_area": 800
+                            }
+                        },
+                        "color": {
+                            "value": "#ffffff"
+                        },
+                        "shape": {
+                            "type": "circle",
+                            "stroke": {
+                                "width": 0,
+                                "color": "#000000"
+                            },
+                            "polygon": {
+                                "nb_sides": 5
+                            }
+                        },
+                        "opacity": {
+                            "value": 0.3,
+                            "random": false,
+                            "anim": {
+                                "enable": false,
+                                "speed": 1,
+                                "opacity_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "size": {
+                            "value": 3,
+                            "random": true,
+                            "anim": {
+                                "enable": false,
+                                "speed": 40,
+                                "size_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "line_linked": {
+                            "enable": true,
+                            "distance": 150,
+                            "color": "#ffffff",
+                            "opacity": 0.2,
+                            "width": 1
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 2,
+                            "direction": "none",
+                            "random": false,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false,
+                            "attract": {
+                                "enable": false,
+                                "rotateX": 600,
+                                "rotateY": 1200
+                            }
+                        }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {
+                                "enable": true,
+                                "mode": "grab"
+                            },
+                            "onclick": {
+                                "enable": true,
+                                "mode": "push"
+                            },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": {
+                                "distance": 140,
+                                "line_linked": {
+                                    "opacity": 1
+                                }
+                            },
+                            "bubble": {
+                                "distance": 400,
+                                "size": 40,
+                                "duration": 2,
+                                "opacity": 8,
+                                "speed": 3
+                            },
+                            "repulse": {
+                                "distance": 200,
+                                "duration": 0.4
+                            },
+                            "push": {
+                                "particles_nb": 4
+                            },
+                            "remove": {
+                                "particles_nb": 2
+                            }
+                        }
+                    },
+                    "retina_detect": true
+                });
+            }
+            
+            // Typewriter Effect for Header
+            const headerTitle = document.querySelector('.header-content h1');
+            const originalText = headerTitle.textContent;
+            headerTitle.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    headerTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            setTimeout(typeWriter, 500);
+        });
+    </script>
+</body>
+</html>
